@@ -1,0 +1,22 @@
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 99e9255..5f64159 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -51,13 +51,13 @@[m
+       <p>[m
+         I am an assistant professor at <a class="place" href="http://www.yale-nus.edu.sg" target="_blank">Yale-NUS College</a> in Singapore and also associate researcher with the <a class="place" href="http://scholar.princeton.edu/cfi/home" target="_blank">Climate Futures Initiative</a> at the Princeton Environmental Institute. I have been a postdoctoral research fellow at the Woodrow Wilson School and the University Center for Human Values at Princeton University and, more recently, a fellow at the Center for Advanced Study in the Behavioral Sciences at Stanford University.[m
+ [m
+[31m-<!--       	<br><br>[m
+[32m+[m	[32m<!--       	<br><br>[m
+ [m
+[31m-        I work primarily on the economics of climate change, focusing on the evaluation of global climate policy. The approach my co-authors and I take differs from previous work in that we take into account that several sub-optimal aspects of the global economy with which climate policy interacts. Think of it as second best climate policy. For example, it is possible that climate change as well as climate policy will affect poor people disproportionately, and that in many instances the institutions don't exist to protect these vulnerable groups. An evaluation of climate policy should then consider its heterogeneous effects on different socio-economic groups. Or consider the problem of particulate air pollution, which annually causes over six million premature deaths across the globe. Climate policy will affect both baseline air pollution, as well as the cost of pollution control policy, so an evaluation of climate policy should take those interactions into account.[m
+[32m+[m	[32m        I work primarily on the economics of climate change, focusing on the evaluation of global climate policy. The approach my co-authors and I take differs from previous work in that we take into account that several sub-optimal aspects of the global economy with which climate policy interacts. Think of it as second best climate policy. For example, it is possible that climate change as well as climate policy will affect poor people disproportionately, and that in many instances the institutions don't exist to protect these vulnerable groups. An evaluation of climate policy should then consider its heterogeneous effects on different socio-economic groups. Or consider the problem of particulate air pollution, which annually causes over six million premature deaths across the globe. Climate policy will affect both baseline air pollution, as well as the cost of pollution control policy, so an evaluation of climate policy should take those interactions into account.[m
+ [m
+[31m-        <br><br>[m
+[32m+[m	[32m        <br><br>[m
+ [m
+[31m-        Aside from climate policy, I am also interested in the interaction between family planning and inequality. If fertility rates differ across the income distribution, this affects the intergenerational dynamics of the income distribution. My co-author and I have developed a stochastic model in which this interaction can be studied analytically. We have -->[m
+[32m+[m	[32m        Aside from climate policy, I am also interested in the interaction between family planning and inequality. If fertility rates differ across the income distribution, this affects the intergenerational dynamics of the income distribution. My co-author and I have developed a stochastic model in which this interaction can be studied analytically. We have -->[m
+       	[m
+         </p>[m
+           <p class="alison">[m

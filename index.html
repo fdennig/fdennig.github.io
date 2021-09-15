@@ -9,93 +9,88 @@
 
   ga('create', 'UA-46847854-1', 'princeton.edu');
   ga('send', 'pageview');
-
 </script>  
   
 <head>
-  <meta name="viewport" content="width=808">
+  <!-- <meta name="viewport" content="width=808"> -->
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
   <title>fdennig</title>
-  <link rel="STYLESHEET" href="style1.css" type="text/css">
+  <!-- <link rel="STYLESHEET" href="style1.css" type="text/css"> -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
+  <link rel="STYLESHEET" href="style.css" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
 </head>
 
 <body>
 
-  <div id="sideMenu">
-    <ul class="menu">
-      <h5>home</h5>
-      <li class="menu">
-      	<p class="assistiveText"><br /></p>
-      </li>
-      
-      <li class="menu">
-    	<a class="inMenu" href="research.html">research</a>
-    	<p class="assistiveText"> <br /></p>
-      </li>
-      
-      <li class="menu">
-    	<a class="inMenu" href="resume.html">resume</a>
-    	<p class="assistiveText"> <br /></p>
-      </li>
+  <div class="container">
 
-    </ul>
-  
-  </div>
-  
-  
-  
-  <div id="container">
-    <div id="MainCopy">
-      <h3>about</h3>
-      <p>
-        I am an assistant professor at <a class="place" href="http://www.yale-nus.edu.sg" target="_blank">Yale-NUS College</a> in Singapore and also associate researcher with the <a class="place" href="http://scholar.princeton.edu/cfi/home" target="_blank">Climate Futures Initiative</a> at the Princeton Environmental Institute. I have been a postdoctoral research fellow at the Woodrow Wilson School and the University Center for Human Values at Princeton University and, more recently, a fellow at the Center for Advanced Study in the Behavioral Sciences at Stanford University.
+    <header class="row sticky hidden-sm" id="top-big">
+      <h1>francis dennig</h1>
+    </header>
 
-<!--       	<br><br>
+    <header class="row sticky hidden-md hidden-lg" id="top-sm">
+      <h1>francis dennig</h1>
+      <label for="drawer-checkbox" class="button drawer-toggle" id="drawerButton"></label>
+    </header>
 
-        I work primarily on the economics of climate change, focusing on the evaluation of global climate policy. The approach my co-authors and I take differs from previous work in that we take into account that several sub-optimal aspects of the global economy with which climate policy interacts. Think of it as second best climate policy. For example, it is possible that climate change as well as climate policy will affect poor people disproportionately, and that in many instances the institutions don't exist to protect these vulnerable groups. An evaluation of climate policy should then consider its heterogeneous effects on different socio-economic groups. Or consider the problem of particulate air pollution, which annually causes over six million premature deaths across the globe. Climate policy will affect both baseline air pollution, as well as the cost of pollution control policy, so an evaluation of climate policy should take those interactions into account.
+    <div class="row">
 
-        <br><br>
+      <div class="col-sm-12 col-md-3" id="left">
+        <div class="row">
+        <input type="checkbox" id="drawer-checkbox" class="drawer">
+          <div class="col-sm-12" id="inside">
+        <label for="drawer-checkbox" class="drawer-close"></label>
+        <nav id="navbar">
+          <p class="nonlink">Home</p>
+          <!-- <a href="#">Home</a> -->
+          <a href="research.html">Publications</a>
+<!--           <a href="#">Work in progress</a>
+          <a href="#">Teaching</a> -->
+          <a href="cvDennig.pdf">Resume</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=6Xi_RjYAAAAJ" target="_blank">Google Scholar</a>
+          <a itemprop="sameAs" content="https://orcid.org/0000-0001-7362-1009" href="https://orcid.org/0000-0001-7362-1009" target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">https://orcid.org/0000-0001-7362-1009</a>
+        </nav>
+        </div>
+        </div>
+      </div>
 
-        Aside from climate policy, I am also interested in the interaction between family planning and inequality. If fertility rates differ across the income distribution, this affects the intergenerational dynamics of the income distribution. My co-author and I have developed a stochastic model in which this interaction can be studied analytically. We have -->
-      	
-        </p>
-          <p class="alison">
-            September 2019
-          </p>
-
-      <h3> contact details </h3>
-
-          <div class="rim">
-              <img id="right_col" src="profileNew.jpg" style="width:124px;height:130px;"/> 
+      <div class="col-sm-12 col-md-9" id="right">
+        <div class="row">
+            <p class="paragraph">
+              I am an assistant professor at <a class="place" href="http://www.yale-nus.edu.sg" target="_blank">Yale-NUS College</a> in Singapore - currently on leave at the <a class="place" href="https://www.worldbank.org/" target="_blank">World Bank</a> - and an associate researcher with the <a class="place" href="http://scholar.princeton.edu/cfi/home" target="_blank">Climate Futures Initiative</a> at the Princeton Environmental Institute. <br>
+              I work primarily on climate change policy, where my academic research focuses on global policy trade-offs, while my current policy oriented work at the World Bank focuses specifically on the trade-offs confronted by developing countries in dealing with the implications of climate change and the implementation of climate policy.
+              In addition to climate economics I have ongoing research on inequality and population economics, focusing specifically on the impact of intergenerational transmission on the dynamics of the income distribution.
+              </p>
+        </div>
+        <div class="row">
+          <div class="col-md-8 hidden-sm" style="position: relative;">
+            <p class="textAtBottom">
               fdennig@yale-nus.edu.sg
-              <br><br>
-              Yale-NUS College
-              <br>
-              12 college ave west #01-201
-              <br>
-              singapore 138610
-              <br>
-              office: RC2-01-01A
-          
-             
+            </p>
           </div>
-            
+          <div class="col-md-4" id="imagediv" >
+            <img class="section-media" src="profileNew.jpg" /> <!-- style="width:124px;height:130px;"-->
+          </div>
+          <div class="col-sm-12 hidden-lg hidden-md">
+            <p>
+              fdennig@yale-nus.edu.sg
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="bottom">
+      <div class="col-md-9 col-md-offset-3" id="footer">
+        <p>September 2021 </p>
+      </div>
     </div>
 
-    <div id="footer">
-      <!-- adapted from design by adam patricka &amp; CSS by des traynor &#xA9; 2004; <br>courtesy of <a href="http://www.openwebdesign.org" target="_blank" class="inFooter">open web design</a> &amp;
-      <a href="http://www.best10webhosting.net" target="_blank" class="inFooter">best10webhosting</a></br> -->
-    </div>
-
-
   </div>
-  
-  <div id="top">
-     <h1>francis dennig</h1>
-  </div>
-
-  
   
 </body>
+
 </html>
