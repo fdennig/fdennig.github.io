@@ -13,6 +13,7 @@
      position: fixed;*/
      border-style: none;
      margin: 0;
+     position: fixed;
     }
     #top-big
     {
@@ -36,6 +37,10 @@
     {
       /*border-right: 1px solid #AAAAAA;*/
       border-right: 1px solid #AAAAAA;
+    }
+    #testel
+    {
+      position: fixed;
     }
     #inside
     {
