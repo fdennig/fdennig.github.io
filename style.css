@@ -74,3 +74,24 @@
     {
       margin: 0;
     }
+    .has-small-font-size
+    {
+      text-align: justify;
+    }
+    .article
+    {
+      text-align: justify;
+    }
+    hr 
+    {
+      width:100%;
+      margin: 10 auto;
+    }
+
+    .separator 
+    {
+      border: 0;
+      height: 2px;
+      /*border-top: 1px solid #CCC;*/
+      background-image: linear-gradient(to right, transparent, #CCC, transparent); 
+    }
