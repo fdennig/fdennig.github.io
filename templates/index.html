@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+  {# Welcome / intro section #}
+  <section class="content-wrapper home-wrapper">
+    <header class="content-header">
+      <h1>Welcome</h1>
+      <p class="lead home-tagline">I am an economist with extensive expertise on climate and energy.
+          I work at the UNDP leading a team focused on improving the clean energy finance landscape in Africa.
+      </p>
+      <p class="lead">
+        Here you can explore my
+        <a href="{{ SITEURL }}/pages/publications" class="text-primary">work</a>
+        as well as my
+        <a href="{{ SITEURL }}/category/posts.html" class="text-primary">recent thoughts</a>
+        on these topics.
+      </p>
+    </header>
+  </section>
+  {# Latest posts section #}
+  {% set POSTS_CATEGORY = 'posts' %}
+  <section class="content-wrapper posts-wrapper mt-5">
+    <header class="content-header">
+      <h2>Latest Posts</h2>
+    </header>
+    <div class="content-body">
+      {% for a in articles if a.category and a.category.name == POSTS_CATEGORY %}
+        <div class="mb-4">
+          <h3><a href="{{ SITEURL }}/{{ a.url }}">{{ a.title }}</a></h3>
+          <small class="text-muted">{{ a.date.strftime('%Y-%m-%d') }}</small>
+          {% if a.summary %}<p>{{ a.summary }}</p>{% endif %}
+        </div>
+      {% else %}
+        <p>No posts yet.</p>
+      {% endfor %}
+    </div>
+  </section>
+  {# About section #}
+  {% set about_page = (pages | selectattr('slug','equalto','about') | list | first) %}
+  {% if about_page %}
+  <section class="content-wrapper about-wrapper mt-5" id="about">
+    <header class="content-header">
+      <h2>About</h2>
+    </header>
+    <div class="content-body">
+      <div class="about-flex">
+        <img
+          src="{{ SITEURL }}/images/profile-400.jpg"
+          srcset="{{ SITEURL }}/images/profile-800.jpg 800w,
+                  {{ SITEURL }}/images/profile-400.jpg 400w"
+          class="img-responsive hero-headshot"
+          alt="Francis Dennig portrait">
+        <div class="about-body">
+          {{ about_page.content }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}  
+{% endblock %}

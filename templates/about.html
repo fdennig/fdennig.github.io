@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- <h1>{{ page.title }}</h1> -->
+
+  <div class="row about-layout">
+    <div class="col-sm-3">
+      <img
+        src="{{ SITEURL }}/images/profile-400.jpg"
+        srcset="{{ SITEURL }}/images/profile-800.jpg 800w,
+                {{ SITEURL }}/images/profile-400.jpg 400w"
+        class="img-responsive img-circle hero-headshot"
+        alt="Francis Dennig portrait"
+        style="max-width:180px; width:100%; margin:0 0 15px 0;">
+    </div>
+    <div class="col-sm-9">
+      {{ page.content }}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="content-wrapper pub-wrapper">
+  <header class="content-header pub-header">
+    <h1>{{ page.title if page else 'Publications' }}</h1>
+    <div class="pub-sort">
+      <span class="label-text">sort by:</span>
+      <button type="button" class="pub-sort-btn active" data-sort="importance">Importance</button>
+      <button type="button" class="pub-sort-btn" data-sort="date">Date</button>
+    </div>
+  </header>
+
+  <div class="content-body">
+    {% set pubcat = 'publications' %}
+    <div class="pub-list" id="pub-list">
+    {% for p in articles if p.category and p.category.name|lower == pubcat %}
+      {% set ext = p.metadata.link or p.metadata.url or '' %}
+      {% set doi = p.metadata.doi %}
+      {% set doi_url = 'https://doi.org/' ~ doi if doi else '' %}
+      {% set cites_raw = p.metadata.citations or '' %}
+      {% set cites_num = (cites_raw.isdigit() and cites_raw)|int or 0 %}
+      <article class="pub-item"
+               data-cites="{{ cites_num }}"
+               data-date="{{ p.date.strftime('%Y-%m-%d') }}">
+        <h3 class="pub-title">
+          {% if ext %}<a href="{{ ext }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}
+        </h3>
+        <div class="pub-meta small text-muted">
+          {% if p.metadata.type %}<span class="label label-default">{{ p.metadata.type|title }}</span>{% endif %}
+          {% if p.metadata.outlet %}
+            {% if doi %}
+              <a href="{{ doi_url }}" target="_blank" rel="noopener">{{ p.metadata.outlet }}</a>
+            {% else %}
+              {{ p.metadata.outlet }}
+            {% endif %}
+          {% endif %}
+          {% if p.metadata.year %} ({{ p.metadata.year }}){% endif %}
+          {% if doi %}
+            • <a class="cite-badge"
+                 data-doi="{{ doi|lower }}"
+                 data-fallback-cites="{{ p.metadata.citations or '' }}"
+                 data-doi-url="{{ doi_url }}"
+                 href="#"
+                 target="_blank" rel="noopener">… cites</a>
+          {% endif %}
+        </div>
+        {% if p.summary %}<p class="pub-summary">{{ p.summary }}</p>{% endif %}
+        {% if p.authors or p.content %}
+        <details class="pub-abstract">
+          <summary>Abstract and author attribution</summary>
+          {% if p.authors %}
+          <div class="pub-authors small">
+            {% for author in p.authors %}
+              {% set name = author|string %}
+              {% if 'Dennig' in name %}<strong>{{ name }}</strong>{% else %}{{ name }}{% endif %}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% if p.content %}
+          <div class="abstract-text">{{ p.content }}</div>
+          {% endif %}
+        </details>
+        {% endif %}
+      </article>
+    {% else %}
+      <p>No publications yet.</p>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ SITEURL }}/static/semantic-citations.js"></script>
+  <script src="{{ SITEURL }}/static/sort-publications.js"></script>
+{% endblock %}

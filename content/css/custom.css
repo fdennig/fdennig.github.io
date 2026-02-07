@@ -1,0 +1,352 @@
+.hero-headshot {
+  display: block;
+  width: 220px;       /* normal desktop size */
+  height: auto;
+  margin: 0 auto 20px auto;  /* center it and add spacing below */
+  box-shadow: 0 0 8px rgba(0,0,0,.18);
+  border: 3px solid #fff;
+  border-radius: 0;        /* force rectangle */
+  object-fit: cover;       /* keeps proper aspect if intrinsic ratio differs */
+}
+
+/* Neutralize any Bootstrap .img-circle still applied somewhere */
+.hero-headshot.img-circle {
+  border-radius: 0 !important;
+}
+
+/* remove left-floating constraints */
+.media-left {
+  display: block;
+  width: 100%;
+  text-align: center;   /* centers the image horizontally */
+}
+
+/* on small screens, shrink the image */
+@media (max-width: 767px) {
+  .hero-headshot {
+    max-width: 120px;
+    margin: 0 auto 15px auto;
+  }
+}
+
+/* filepath: c:\code\fdennig\content\css\custom.css */
+.about-layout img.hero-headshot { display:block; margin:0 0 15px 0; }
+@media (max-width:767px){
+  .about-layout img.hero-headshot { margin:0 auto 20px; }
+}
+
+/* About section layout */
+.about-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.about-flex .hero-headshot {
+  flex: 0 0 180px;
+  max-width: 180px;
+  width: 180px;
+  margin: 0;
+  border-radius: 0; /* keep rectangle */
+  box-shadow: 0 0 8px rgba(0,0,0,.18);
+  border: 3px solid #fff;
+  object-fit: cover;
+}
+
+.about-flex .about-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .about-flex {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .about-flex .hero-headshot {
+    width: 140px;
+    max-width: 140px;
+  }
+}
+
+/* Add vertical space above home tagline */
+.home-tagline {
+  margin-top: 1.25rem; /* adjust as needed */
+}
+
+/* Stacked publication rows */
+.pub-list { margin-top:25px; }
+.pub-item {
+  padding:14px 0;
+  border-top:1px solid rgba(0,0,0,.12);
+}
+.pub-item:first-child { border-top:0; }
+.pub-title { margin:0 0 4px; font-size:17px; line-height:1.25; }
+.pub-meta { margin:0 0 4px; }
+.pub-authors { margin:0 0 6px; }
+.pub-summary { margin:0; }
+.cite-badge {
+  white-space: nowrap;
+  text-decoration: none;
+}
+.cite-badge:hover {
+  text-decoration: underline;
+}
+
+/* Abstract toggle */
+.pub-abstract { margin-top:6px; }
+.pub-abstract summary {
+  cursor:pointer;
+  font-size:0.85em;
+  color:#337ab7;
+  outline:none;
+}
+.pub-abstract[open] summary { font-weight:600; }
+.abstract-text { margin-top:4px; }
+/* Sort buttons */
+.pub-sort-btn {
+  background:#f5f5f5;
+  border:1px solid #ccc;
+  padding:3px 10px;
+  margin-left:4px;
+  border-radius:3px;
+  cursor:pointer;
+  font-size:12px;
+  line-height:1.4;
+}
+.pub-sort-btn.active {
+  background:#337ab7;
+  border-color:#2e6da4;
+  color:#fff;
+}
+.pub-sort-btn:focus { outline:2px solid #337ab7; outline-offset:1px; }
+/* Alignment fixes for publications */
+.pub-wrapper {
+  /* match site main content width (bootstrap container already handles, so just reset) */
+}
+
+.pub-header {
+  display:flex;
+  align-items:flex-end;
+  gap:18px;
+  flex-wrap:wrap;
+  margin:0 0 10px 0;
+  padding:0;
+}
+
+.pub-header h1 {
+  margin:0;
+  font-size:28px;
+  line-height:1.15;
+}
+
+.pub-sort {
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.pub-sort .label-text {
+  color:#777;
+  font-size:12px;
+  text-transform:lowercase;
+}
+
+/* Ensure list lines up exactly under header */
+.pub-list {
+  margin-top:0; /* was 25px; header already provides spacing */
+}
+
+/* Small viewport tweak */
+@media (max-width:600px){
+  .pub-header {
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .pub-sort {
+    margin-left:0;
+  }
+}
+
+/* Make all report images square and consistent */
+.square-img {
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+}
+
+/* Style for details/summary dropdown */
+details summary {
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+details[open] summary {
+  margin-bottom: 0.5rem;
+}
+
+.report-details {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Keep images square, not oversized */
+.square-img {
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  width: 180px;
+  height: 180px;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto 1rem auto; /* center inside card */
+}
+
+/* Card consistency */
+.card {
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Reports grid layout */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 0;
+}
+
+.report-item {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 6px;
+  overflow: visible; /* Changed from hidden to allow overlay */
+  transition: box-shadow 0.2s ease;
+  position: relative; /* Enable positioning context */
+  /* Removed aspect-ratio constraint to allow expansion */
+}
+
+.report-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+/* When details are open, make the item overlay */
+.report-item:has(details[open]) {
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+}
+
+/* Style the expanded content to overlay */
+.report-item details[open] {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  z-index: 11;
+}
+
+.report-link {
+  display: block;
+  text-decoration: none;
+  /* Remove flex: 1 to allow natural sizing */
+}
+
+.report-image {
+  width: 100%;
+  height: 200px; /* Fixed height for consistent image sizing */
+  object-fit: cover;
+  display: block;
+}
+
+.report-content {
+  padding: 12px;
+  flex: 0 0 auto; /* Don't grow, just take what's needed */
+  background: #fff;
+}
+
+.report-title {
+  margin: 0 0 8px 0;
+  font-size: 17px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.report-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.report-title a:hover {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.report-meta {
+  margin: 0 0 8px 0;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.report-meta .label {
+  font-size: 0.75em;
+  margin-right: 6px;
+}
+
+.report-abstract {
+  margin-top: 8px;
+  position: relative;
+}
+
+.report-abstract summary {
+  cursor: pointer;
+  font-size: 0.85em;
+  color: #337ab7;
+  outline: none;
+  font-weight: normal;
+}
+
+.report-abstract[open] summary {
+  font-weight: 600;
+  margin-bottom: 0; /* Remove margin since content will be positioned absolutely */
+}
+
+.report-abstract[open] .report-details {
+  padding: 12px;
+  background: #fff;
+}
+
+.report-details {
+  font-size: 0.85em;
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .reports-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .reports-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Adjust for small screens */
+@media (max-width: 768px) {
+  .square-img {
+    width: 140px;
+    height: 140px;
+  }
+}

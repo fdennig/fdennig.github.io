@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="content-wrapper reports-wrapper">
+  <header class="content-header pub-header">
+    <h1>Policy Reports</h1>
+  </header>
+  
+  <div class="content-body">
+    <div class="reports-grid">
+      {% for article in articles if article.category == "reports" %}
+        <article class="report-item">
+          <a href="{{ article.metadata.uri }}" target="_blank" rel="noopener" class="report-link">
+            <img src="{{ SITEURL }}/{{ article.metadata.image }}"
+                class="report-image"
+                alt="{{ article.title }}">
+          </a>
+          <div class="report-content">
+            <h3 class="report-title">
+              <a href="{{ article.metadata.uri }}" target="_blank" rel="noopener">{{ article.title }}</a>
+            </h3>
+            <div class="report-meta small text-muted">
+              <span class="label label-default">{{ article.metadata.type|title if article.metadata.type else 'Report' }}</span>
+              {% if article.metadata.outlet %}{{ article.metadata.outlet }}{% endif %}
+              {% if article.date %} ({{ article.date.strftime('%Y') }}){% endif %}
+            </div>
+            {% if article.content %}
+            <details class="report-abstract">
+              <summary>Abstract and details</summary>
+              <div class="report-details">
+                <p class="text-muted small">Published: {{ article.date.strftime('%B %d, %Y') }}</p>
+                <div class="abstract-text">{{ article.content }}</div>
+                <p class="mt-2">
+                  <a href="{{ article.metadata.uri }}" target="_blank" rel="noopener">
+                    View full report →
+                  </a>
+                </p>
+              </div>
+            </details>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
