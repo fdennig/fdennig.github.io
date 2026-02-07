@@ -9,7 +9,7 @@ TIMEZONE = 'Europe/Rome'
 DEFAULT_LANG = 'en'
 
 # THEME = 'notmyidea'
-THEME = 'themes/pelican-themes/pelican-bootstrap3'
+THEME = 'themes/pelican-bootstrap3'
 # BOOTSTRAP_THEME = 'slate'
 BOOTSTRAP_THEME = 'simplex' #'readable' #'simplex'
 # PADDED_SINGLE_COLUMN_STYLE = True
