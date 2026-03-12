@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ── VCF download prompt (mobile + ?qr=1 only) ─────────────────────────── #}
+<div id="vcf-prompt" style="display:none;">
+  <div class="vcf-banner">
+    <p class="vcf-msg">Saving contact card&hellip;</p>
+    <a id="vcf-download-btn"
+       href="{{ SITEURL }}/files/francis-dennig.vcf"
+       download="francis-dennig.vcf"
+       class="btn btn-primary">
+      <i class="fa fa-address-card-o"></i>&nbsp; Download contact card
+    </a>
+    <p class="vcf-hint">Tap the button if the download did not start automatically.</p>
+  </div>
+</div>
+
+{# ── Bio (about layout) ─────────────────────────────────────────────────── #}
+<div class="about-flex" style="margin-bottom: 28px;">
+  <img src="{{ SITEURL }}/images/profile-400.jpg"
+       srcset="{{ SITEURL }}/images/profile-800.jpg 800w,
+               {{ SITEURL }}/images/profile-400.jpg 400w"
+       class="hero-headshot"
+       alt="Francis Dennig portrait">
+  <div class="about-body">
+    {{ page.content }}
+  </div>
+</div>
+
+{# ── Contact details ────────────────────────────────────────────────────── #}
+<div class="contact-card">
+  <a class="contact-item" href="mailto:francis.dennig@undp.org">
+    <span class="contact-icon"><i class="fa fa-envelope"></i></span>
+    <span class="contact-label">Email</span>
+    <span class="contact-value">francis.dennig@undp.org</span>
+  </a>
+  <a class="contact-item" href="tel:+393299398668">
+    <span class="contact-icon"><i class="fa fa-phone"></i></span>
+    <span class="contact-label">Phone</span>
+    <span class="contact-value">+39 329 939 8668</span>
+  </a>
+  <a class="contact-item" href="https://www.linkedin.com/in/dr-francis-dennig-95624765/" target="_blank" rel="noopener">
+    <span class="contact-icon"><i class="fa fa-linkedin-square"></i></span>
+    <span class="contact-label">LinkedIn</span>
+    <span class="contact-value">Dr. Francis Dennig</span>
+  </a>
+  <a class="contact-item" href="https://github.com/fdennig" target="_blank" rel="noopener">
+    <span class="contact-icon"><i class="fa fa-github"></i></span>
+    <span class="contact-label">GitHub</span>
+    <span class="contact-value">fdennig</span>
+  </a>
+</div>
+
+{# ── Share QR code button (mobile only) ─────────────────────────────────── #}
+<div class="qr-share-wrap">
+  <button id="qr-toggle-btn" class="btn btn-default qr-share-btn" type="button">
+    <i class="fa fa-qrcode"></i>&nbsp; Show my QR code
+  </button>
+  <div id="qr-panel" class="qr-panel" style="display:none;">
+    <p class="qr-panel-hint">Let someone scan this to save your contact.</p>
+    <div id="qr-canvas"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+        integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+(function () {
+  var QR_URL = 'https://fdennig.github.io/pages/contact/?qr=1';
+
+  // ── VCF auto-download on mobile + ?qr=1 ──────────────────────────────
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  var fromQR   = /[?&]qr=1/.test(window.location.search);
+  if (isMobile && fromQR) {
+    document.getElementById('vcf-prompt').style.display = 'block';
+    document.getElementById('vcf-download-btn').click();
+  }
+
+  // ── QR share button ───────────────────────────────────────────────────
+  var btn     = document.getElementById('qr-toggle-btn');
+  var panel   = document.getElementById('qr-panel');
+  var canvas  = document.getElementById('qr-canvas');
+  var rendered = false;
+
+  btn.addEventListener('click', function () {
+    var open = panel.style.display !== 'none';
+    if (open) {
+      panel.style.display = 'none';
+      btn.innerHTML = '<i class="fa fa-qrcode"></i>&nbsp; Show my QR code';
+    } else {
+      if (!rendered) {
+        new QRCode(canvas, {
+          text:         QR_URL,
+          width:        220,
+          height:       220,
+          correctLevel: QRCode.CorrectLevel.M
+        });
+        rendered = true;
+      }
+      panel.style.display = 'block';
+      btn.innerHTML = '<i class="fa fa-qrcode"></i>&nbsp; Hide QR code';
+    }
+  });
+})();
+</script>
+{% endblock %}

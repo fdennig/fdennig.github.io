@@ -42,7 +42,7 @@ MENUITEMS = [
     ('Home', '/'),
     ('Publications', '/pages/publications/'),   # publications page
     ('Reports', '/pages/reports/'),             # reports page
-    ('About', '/#about'),
+    ('Contact', '/pages/contact/')
 ]
 
 # Blogroll
