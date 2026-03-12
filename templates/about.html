@@ -17,3 +17,23 @@
     </div>
   </div>
 {% endblock %}
+
+{% block scripts %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Francis Dennig",
+  "jobTitle": "Energy Finance Lead",
+  "worksFor": {"@type": "Organization", "name": "UNDP"},
+  "url": "https://fdennig.github.io",
+  "email": "francis.dennig@undp.org",
+  "sameAs": [
+    "https://www.linkedin.com/in/dr-francis-dennig-95624765/",
+    "https://github.com/fdennig",
+    "https://scholar.google.com/citations?user=6Xi_RjYAAAAJ&hl=en",
+    "https://orcid.org/0000-0001-7362-1009"
+  ]
+}
+</script>
+{% endblock %}
