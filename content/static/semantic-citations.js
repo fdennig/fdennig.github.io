@@ -55,46 +55,58 @@
     return;
   }
 
-  // Fetch all (using cache)
-  const fetchPromises = [];
+  // Fetch sequentially with delay; Semantic Scholar public API allows ~1 req/sec
+  const FETCH_DELAY_MS = 1100;
+  const MAX_RETRIES = 2;
+
+  function delay(ms) { return new Promise(res => setTimeout(res, ms)); }
+
+  const uncached = [];
   groups.forEach((nodes, doi) => {
     const cached = loadCache(doi);
     if (cached) {
       applyData(nodes, cached.count, cached.url);
     } else {
-      fetchPromises.push(
-        fetch(`https://api.semanticscholar.org/graph/v1/paper/DOI:${encodeURIComponent(doi)}?fields=citationCount,url,paperId`)
-          .then(r => {
-            if (!r.ok) throw new Error(r.status);
-            return r.json();
-          })
-          .then(data => {
-            const count = data.citationCount;
-            if (!Number.isFinite(count)) throw new Error('no-count');
-            const url = data.url || (data.paperId ? `https://www.semanticscholar.org/paper/${data.paperId}` : null);
-            saveCache(doi, count, url);
-            applyData(nodes, count, url);
-          })
-          .catch(() => {
-            // Keep fallback already shown; ensure article has numeric cites
-            nodes.forEach(b => {
-              const art = b.closest('.pub-item');
-              if (art && !art.dataset.cites) art.dataset.cites = '0';
-            });
-          })
-      );
+      uncached.push({ doi, nodes });
     }
   });
 
-  if (!fetchPromises.length) {
-    // All cached
+  if (!uncached.length) {
     document.dispatchEvent(new Event('semanticCitationsUpdated'));
     return;
   }
 
-  Promise.allSettled(fetchPromises).then(() => {
+  (async function fetchSequentially() {
+    for (let i = 0; i < uncached.length; i++) {
+      const { doi, nodes } = uncached[i];
+      if (i > 0) await delay(FETCH_DELAY_MS);
+
+      let success = false;
+      for (let attempt = 0; attempt <= MAX_RETRIES && !success; attempt++) {
+        if (attempt > 0) await delay(FETCH_DELAY_MS * attempt * 2);
+        try {
+          const r = await fetch(`https://api.semanticscholar.org/graph/v1/paper/DOI:${encodeURIComponent(doi)}?fields=citationCount,url,paperId`);
+          if (r.status === 429) continue; // retry after longer delay
+          if (!r.ok) throw new Error(r.status);
+          const data = await r.json();
+          const count = data.citationCount;
+          if (!Number.isFinite(count)) throw new Error('no-count');
+          const url = data.url || (data.paperId ? `https://www.semanticscholar.org/paper/${data.paperId}` : null);
+          saveCache(doi, count, url);
+          applyData(nodes, count, url);
+          success = true;
+        } catch(e) {
+          if (attempt === MAX_RETRIES) {
+            nodes.forEach(b => {
+              const art = b.closest('.pub-item');
+              if (art && !art.dataset.cites) art.dataset.cites = '0';
+            });
+          }
+        }
+      }
+    }
     document.dispatchEvent(new Event('semanticCitationsUpdated'));
-  });
+  })();
 
   function applyData(nodes, count, targetUrl){
     nodes.forEach(b => {
