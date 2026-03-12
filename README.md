@@ -70,4 +70,22 @@ To validate: paste any page URL into [Google's Rich Results Test](https://search
 
 ## Deploying
 
-_To be documented._
+The site is deployed to GitHub Pages via the `gh-pages` branch using `ghp-import`.
+
+**Setup (one-time):**
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+Then in GitHub → Settings → Pages → set source to branch **`gh-pages`**, folder **`/ (root)`**.
+
+**Publishing changes:**
+```bash
+source venv/bin/activate
+invoke gh-pages
+```
+
+This builds the site using `publishconf.py` and force-pushes the `output/` folder to the `gh-pages` branch. The live site updates within a minute or two.
+
+**Note:** the invoke task is defined as `gh_pages` in `tasks.py` but called with a hyphen (`gh-pages`) on the command line — that is how invoke works.
