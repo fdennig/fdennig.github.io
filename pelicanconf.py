@@ -38,10 +38,8 @@ PUBLICATIONS_CATEGORY = 'publications'
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False  # hide automatic pages so we control order
 
-# Custom menu (add Posts category link)
 MENUITEMS = [
     ('Home', '/'),
-    ('Posts', '/category/posts.html'),          # category listing for posts
     ('Publications', '/pages/publications/'),   # publications page
     ('Reports', '/pages/reports/'),             # reports page
     ('About', '/#about'),
