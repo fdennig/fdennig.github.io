@@ -170,113 +170,49 @@
   }
 }
 
-/* Make all report images square and consistent */
-.square-img {
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
-  border-radius: 8px;
+/* ── Reports page ───────────────────────────────────────── */
+.reports-intro {
+  font-size: 0.95em;
+  color: #555;
+  margin: 0 0 16px;
+  line-height: 1.6;
+  border-left: 3px solid #337ab7;
+  padding-left: 12px;
 }
 
-/* Style for details/summary dropdown */
-details summary {
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-details[open] summary {
-  margin-bottom: 0.5rem;
-}
-
-.report-details {
-  font-size: 0.9rem;
-  color: #333;
-}
-
-/* Keep images square, not oversized */
-.square-img {
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
-  width: 180px;
-  height: 180px;
-  border-radius: 6px;
-  display: block;
-  margin: 0 auto 1rem auto; /* center inside card */
-}
-
-/* Card consistency */
-.card {
-  text-align: center;
-  padding: 1rem;
-}
-
-/* Reports grid layout */
-.reports-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.report-list {
   margin-top: 0;
 }
 
 .report-item {
   display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 6px;
-  overflow: visible; /* Changed from hidden to allow overlay */
-  transition: box-shadow 0.2s ease;
-  position: relative; /* Enable positioning context */
-  /* Removed aspect-ratio constraint to allow expansion */
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid #e8e8e8;
+  align-items: flex-start;
 }
 
-.report-item:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+.report-thumb-link {
+  flex: 0 0 72px;
 }
 
-/* When details are open, make the item overlay */
-.report-item:has(details[open]) {
-  z-index: 10;
-  box-shadow: 0 4px 16px rgba(0,0,0,.2);
-}
-
-/* Style the expanded content to overlay */
-.report-item details[open] {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.08);
-  border-top: none;
-  border-radius: 0 0 6px 6px;
-  z-index: 11;
-}
-
-.report-link {
+.report-thumb {
   display: block;
-  text-decoration: none;
-  /* Remove flex: 1 to allow natural sizing */
+  width: 72px;
+  height: auto;
+  border: 1px solid #ddd;
 }
 
-.report-image {
-  width: 100%;
-  height: 200px; /* Fixed height for consistent image sizing */
-  object-fit: cover;
-  display: block;
-}
-
-.report-content {
-  padding: 12px;
-  flex: 0 0 auto; /* Don't grow, just take what's needed */
-  background: #fff;
+.report-body {
+  flex: 1;
+  min-width: 0;
 }
 
 .report-title {
-  margin: 0 0 8px 0;
+  margin: 0;
   font-size: 17px;
-  line-height: 1.25;
   font-weight: 600;
+  line-height: 1.25;
 }
 
 .report-title a {
@@ -286,67 +222,46 @@ details[open] summary {
 
 .report-title a:hover {
   color: #337ab7;
-  text-decoration: none;
 }
 
 .report-meta {
-  margin: 0 0 8px 0;
+  margin: 2px 0 4px;
   font-size: 0.85em;
   color: #666;
 }
 
-.report-meta .label {
-  font-size: 0.75em;
-  margin-right: 6px;
+/* Abstract truncation */
+.report-abstract-text {
+  font-size: 0.9em;
+  color: #444;
+  line-height: 1.5;
+  /* clamp to 4 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.report-abstract {
-  margin-top: 8px;
-  position: relative;
+.report-abstract-text.expanded {
+  display: block;    /* removes line-clamp */
+  overflow: visible;
 }
 
-.report-abstract summary {
-  cursor: pointer;
+/* remove <p> margins inside abstract to keep tight */
+.report-abstract-text p {
+  margin: 0;
+}
+
+.report-show-more {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 2px;
   font-size: 0.85em;
   color: #337ab7;
-  outline: none;
-  font-weight: normal;
+  cursor: pointer;
 }
 
-.report-abstract[open] summary {
-  font-weight: 600;
-  margin-bottom: 0; /* Remove margin since content will be positioned absolutely */
-}
-
-.report-abstract[open] .report-details {
-  padding: 12px;
-  background: #fff;
-}
-
-.report-details {
-  font-size: 0.85em;
-  color: #555;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .reports-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (max-width: 640px) {
-  .reports-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-/* Adjust for small screens */
-@media (max-width: 768px) {
-  .square-img {
-    width: 140px;
-    height: 140px;
-  }
+.report-show-more:hover {
+  text-decoration: underline;
 }

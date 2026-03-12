@@ -1,9 +1,10 @@
 Title: Kenya CCDR
-Date: 2025-01-15
-Image: images/Itaipu_geral.jpg
+Date: 2023-01-15
+Image: images/kenccdr.jpg
 Category: reports
 Slug: kenya-ccdr
 Outlet: World Bank Report
+Type: report
 URI: https://openknowledge.worldbank.org/handle/10986/40572
 Summary: Identifies the key challenges posed by climate change and actions that can be taken to mitigate the impact.
 

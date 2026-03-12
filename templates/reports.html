@@ -1,21 +1,25 @@
 {% extends "base.html" %}
-
 {% block content %}
 <section class="content-wrapper reports-wrapper">
   <header class="content-header pub-header">
-    <h1>Policy Reports</h1>
+    <h1>Country Climate Development Reports</h1>
   </header>
-  
+
   <div class="content-body">
-    <div class="reports-grid">
+    <p class="reports-intro">While at the Macroeconomics and Debt Unit of the World Bank I led the integration of climate aspects in the World Bank's macroeconomic models and in the process developed the models used in the analysis of these CCDRs.</p>
+    <div class="report-list">
       {% for article in articles if article.category == "reports" %}
         <article class="report-item">
-          <a href="{{ article.metadata.uri }}" target="_blank" rel="noopener" class="report-link">
+
+          {% if article.metadata.image %}
+          <a href="{{ article.metadata.uri }}" target="_blank" rel="noopener" class="report-thumb-link">
             <img src="{{ SITEURL }}/{{ article.metadata.image }}"
-                class="report-image"
-                alt="{{ article.title }}">
+                 class="report-thumb"
+                 alt="{{ article.title }}">
           </a>
-          <div class="report-content">
+          {% endif %}
+
+          <div class="report-body">
             <h3 class="report-title">
               <a href="{{ article.metadata.uri }}" target="_blank" rel="noopener">{{ article.title }}</a>
             </h3>
@@ -25,23 +29,21 @@
               {% if article.date %} ({{ article.date.strftime('%Y') }}){% endif %}
             </div>
             {% if article.content %}
-            <details class="report-abstract">
-              <summary>Abstract and details</summary>
-              <div class="report-details">
-                <p class="text-muted small">Published: {{ article.date.strftime('%B %d, %Y') }}</p>
-                <div class="abstract-text">{{ article.content }}</div>
-                <p class="mt-2">
-                  <a href="{{ article.metadata.uri }}" target="_blank" rel="noopener">
-                    View full report →
-                  </a>
-                </p>
-              </div>
-            </details>
+            <div class="report-abstract-wrap">
+              <div class="report-abstract-text">{{ article.content }}</div>
+              <button class="report-show-more" type="button">Show more</button>
+            </div>
             {% endif %}
           </div>
+
         </article>
       {% endfor %}
     </div>
   </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ SITEURL }}/static/reports.js"></script>
 {% endblock %}
