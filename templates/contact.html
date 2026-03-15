@@ -24,7 +24,8 @@
        class="hero-headshot"
        alt="Francis Dennig portrait">
   <div class="about-body">
-    {{ page.content }}
+    {% set about_page = (pages | selectattr('slug','equalto','about') | list | first) %}
+    {{ about_page.content }}
   </div>
 </div>
 
@@ -55,10 +56,10 @@
 {# ── Share QR code button (mobile only) ─────────────────────────────────── #}
 <div class="qr-share-wrap">
   <button id="qr-toggle-btn" class="btn btn-default qr-share-btn" type="button">
-    <i class="fa fa-qrcode"></i>&nbsp; Show my QR code
+    <i class="fa fa-qrcode"></i>&nbsp; Show QR code
   </button>
   <div id="qr-panel" class="qr-panel" style="display:none;">
-    <p class="qr-panel-hint">Let someone scan this to save your contact.</p>
+    <p class="qr-panel-hint">Scan code to save contact</p>
     <div id="qr-canvas"></div>
   </div>
 </div>
@@ -88,7 +89,7 @@
     var open = panel.style.display !== 'none';
     if (open) {
       panel.style.display = 'none';
-      btn.innerHTML = '<i class="fa fa-qrcode"></i>&nbsp; Show my QR code';
+      btn.innerHTML = '<i class="fa fa-qrcode"></i>&nbsp; Show QR code';
     } else {
       if (!rendered) {
         new QRCode(canvas, {

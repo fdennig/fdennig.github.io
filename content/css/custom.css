@@ -341,12 +341,19 @@
 
 .qr-panel {
   margin-top: 18px;
+  margin-bottom: 28px;
+  text-align: center;
 }
 
 .qr-panel-hint {
   font-size: 0.85em;
   color: #888;
   margin-bottom: 12px;
+}
+
+#qr-canvas {
+  display: flex;
+  justify-content: center;
 }
 
 .qr-panel canvas,
@@ -357,5 +364,9 @@
 }
 
 @media (max-width: 767px) {
-  .qr-share-wrap { display: block; }
+  .qr-share-wrap {
+    display: block;
+    margin-top: 28px;
+    margin-bottom: 28px;
+  }
 }
