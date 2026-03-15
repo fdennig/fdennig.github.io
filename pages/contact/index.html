@@ -2,6 +2,7 @@
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
     <title>Francis Dennig</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-size='14' font-weight='bold' fill='%23337ab7'>FD</text></svg>">
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -92,7 +93,7 @@ Francis Dennig            </a>
        class="hero-headshot"
        alt="Francis Dennig portrait">
   <div class="about-body">
-    <p>I am an economist with 17 years of experience on climate and energy. I work at the United Nations Development Programme coordinating the Energy for Growth in Africa initiative, which aims to bring down the cost of capital for sustainable energy projects by working with projects and investors to reach a common understanding of the actual risks. I have extensive experience in economic and financial modelling and previously worked at the World Bank and as an economics professor at Yale-NUS College in Singapore.</p>
+    <p>I am an economist with 17 years of experience in energy and climate. I work at the United Nations Development Programme coordinating the Energy for Growth in Africa initiative, which aims to bring down the cost of capital for sustainable energy projects by working with project owners, governments, and investors to reduce risk misperception in African markets and to mitigate actual risks in projects. I have extensive experience in economic and financial modelling, I have previously worked at the World Bank, and as an economics professor at Yale-NUS College in Singapore. </p>
   </div>
 </div>
 
@@ -121,10 +122,10 @@ Francis Dennig            </a>
 
 <div class="qr-share-wrap">
   <button id="qr-toggle-btn" class="btn btn-default qr-share-btn" type="button">
-    <i class="fa fa-qrcode"></i>&nbsp; Show my QR code
+    <i class="fa fa-qrcode"></i>&nbsp; Show QR code
   </button>
   <div id="qr-panel" class="qr-panel" style="display:none;">
-    <p class="qr-panel-hint">Let someone scan this to save your contact.</p>
+    <p class="qr-panel-hint">Scan code to save contact</p>
     <div id="qr-canvas"></div>
   </div>
 </div>
@@ -154,7 +155,7 @@ Francis Dennig            </a>
     var open = panel.style.display !== 'none';
     if (open) {
       panel.style.display = 'none';
-      btn.innerHTML = '<i class="fa fa-qrcode"></i>&nbsp; Show my QR code';
+      btn.innerHTML = '<i class="fa fa-qrcode"></i>&nbsp; Show QR code';
     } else {
       if (!rendered) {
         new QRCode(canvas, {
